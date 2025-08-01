@@ -1,3 +1,5 @@
+pub mod surf2;
+
 /// Multiplies two integers
 pub fn multiply(a: i32, b: i32) -> i32 {
     a * b
@@ -39,6 +41,20 @@ mod test {
                 it "awaits" {
                     assert_eq!(four, is_4_task.await)
                 }
+            }
+        }
+
+        describe "surf2" {
+            use super::*;
+            use crate::surf2::{get, Response};
+
+            test "HTTP get request" {
+                let res = surf2::get("https://httpbin.org/get").unwrap();
+
+                assert!(res.body().len() > 0);
+                assert!(res.headers().keys().len() > 0);
+                assert_eq!(res.headers()["content-type"], "application/json");
+                assert_eq!(res.status(), 0);
             }
         }
     }
