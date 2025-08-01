@@ -1,8 +1,8 @@
 [package]
-name = "test2"
+name = "surf2"
 version = "0.1.0"
 authors = ["test@example.com"]
-edition = "2021"
+edition = "2024"
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -22,3 +22,4 @@ pretty_assertions = "*"
 
 [dependencies]
 human-panic = "2.0.2"
+ureq = { version = "3.0.12", features = ["json", "platform-verifier"] }

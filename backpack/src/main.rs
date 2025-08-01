@@ -1,11 +1,11 @@
-use human_panic::{metadata, setup_panic};
-use test2::*;
+mod surf2;
+
+use crate::surf2::Response;
 
 fn main() {
-    setup_panic!(metadata!()
-        .authors("Acme Inc. <support@example.com")
-        .homepage("www.example.com")
-        .support("- Open a support request by email to support@example.com"));
+    let res = surf2::get("https://httpbin.org/get").unwrap();
 
-    println!("3 time 5 is {}", multiply(3, 5));
+    dbg!(res.body());
+    dbg!(res.headers());
+    dbg!(res.status());
 }
